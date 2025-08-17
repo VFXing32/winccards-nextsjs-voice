@@ -1,19 +1,12 @@
 import type { NextConfig } from "next";
 
-const { withCloudflare } = require("@cloudflare/next-on-pages");
-
-module.exports = withCloudflare({
-  reactStrictMode: true,
-});
-
 const nextConfig: NextConfig = {
+  reactStrictMode: true,
   images: {
-    unoptimized: true // Required for static export
+    unoptimized: true, // Required for Cloudflare Workers (no image optimizer)
   },
   eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true, // Allows build to pass even if ESLint errors
   },
 };
 
