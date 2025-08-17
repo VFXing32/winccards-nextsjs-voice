@@ -31,8 +31,9 @@ interface CardData {
 
 export async function POST(req: Request) {
   try {
+    console.log("API route received POST request.");
     const body = await req.json();
-    JSON.stringify(body, null, 2)
+    console.log("Full request body received:", JSON.stringify(body, null, 2));
 
     // Safely access the cardData from the parsed body
     const cardData: CardData | undefined = body.cardData;
@@ -60,24 +61,15 @@ export async function POST(req: Request) {
     );
 
     // CRITICAL: We stringify the cardData to pass as metadata
-    const dispatchOptions = { 
-      metadata: JSON.stringify(cardData),
-      // Add room configuration for better agent handling
-      room: {
-        name: roomName,
-        // Optional: set a reasonable timeout for the room
-        emptyTimeout: 300, // 5 minutes
-        maxParticipants: 2, // Just user and agent
-      }
-    };
+    const dispatchOptions = { metadata: JSON.stringify(cardData) };
 
-    // const dispatch = await agentDispatchClient.createDispatch(
-    //   roomName,
-    //   agentName,
-    //   dispatchOptions
-    // );
-    
+    const dispatch = await agentDispatchClient.createDispatch(
+      roomName,
+      agentName,
+      dispatchOptions
+    );
     // This log should now show the correct data
+    console.log("Dispatch created with metadata:", dispatch.metadata);
 
     const participantToken = await createParticipantToken(
       {
