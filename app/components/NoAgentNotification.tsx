@@ -13,7 +13,7 @@ export function NoAgentNotification(props: NoAgentNotificationProps) {
   const [showNotification, setShowNotification] = useState(false);
   const agentHasConnected = useRef(false);
 
-  // If the agent has connected, we don't need to show the notification.
+  // If the agent has connected, we dont need to show the notification.
   if (
     ["listening", "thinking", "speaking"].includes(props.state) &&
     agentHasConnected.current == false
