@@ -52,17 +52,17 @@ function BlurredCard({
   };
 
   return (
-    <div className="relative w-full max-w-sm mx-auto ">
-      {/* Card Container with 3D flip effect */}
+    <div className="relative w-full max-w-sm mx-auto px-4">
+      {/* Card Container with 3D flip effect - Responsive sizing */}
       <div 
-        className={`relative w-[450px] h-[600px] transition-transform duration-700 preserve-3d ${
+        className={`relative w-full aspect-[3/4] max-w-[350px] mx-auto transition-transform duration-700 preserve-3d ${
           isFlipped ? 'rotate-y-180' : ''
         }`}
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Front of Card */}
         <div 
-          className="absolute inset-0 w-full h-full backface-hidden rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
+          className="absolute inset-0 w-full h-full backface-hidden rounded-xl md:rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
           style={{ backfaceVisibility: 'hidden' }}
           onClick={handleCardClick}
         >
@@ -86,36 +86,36 @@ function BlurredCard({
               // Pre-reveal content
               <div className="flex flex-col h-full">
                 {/* Top Section - Facial Recognition */}
-                <div className="flex flex-col items-center pt-12 space-y-4">
-                  {/* <div className="text-sm font-medium text-green-400 tracking-wider uppercase">
+                <div className="flex flex-col items-center pt-6 md:pt-12 space-y-2 md:space-y-4">
+                  {/* <div className="text-xs md:text-sm font-medium text-green-400 tracking-wider uppercase">
                     Facial Recognition
                   </div>
-                  <div className="w-16 h-16 rounded-full border-4 border-ping-400 flex items-center justify-center">
-                    <div className="w-8 h-8 bg-green-400 rounded-full animate-pulse" />
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border-4 border-ping-400 flex items-center justify-center">
+                    <div className="w-6 h-6 md:w-8 md:h-8 bg-green-400 rounded-full animate-pulse" />
                   </div> */}
                 </div>
                 
                 {/* Middle Section - Main Text */}
-                <div className="flex-1 flex flex-col items-center justify-center space-y-6">
-                  <h1 className="text-4xl font-bold text-center leading-tight">
+                <div className="flex-1 flex flex-col items-center justify-center space-y-3 md:space-y-6 px-4">
+                  <h1 className="text-2xl md:text-4xl font-bold text-center leading-tight">
                     HEY <span className="text-green-400">{cardData.recipientName.toUpperCase()}</span>
                   </h1>
-                  <p className="text-4xl font-bold">FOR YOUR EYES ONLY!</p>
+                  <p className="text-2xl md:text-4xl font-bold text-center">FOR YOUR EYES ONLY!</p>
                 </div>
                 
                 {/* Bottom Section - Logo */}
-                <div className="pb-12 flex justify-center">
+                <div className="pb-6 md:pb-12 flex justify-center">
                   <img 
                     src="/logo.png" 
                     alt="Winc Logo" 
-                    className="h-24 w-auto"
+                    className="h-12 md:h-24 w-auto"
                   />
                 </div>
               </div>
             ) : (
               // Post-reveal content (tap to flip indicator)
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 rounded-full px-4 py-2">
-                <div className="text-sm text-white/90">Tap to flip</div>
+              <div className="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 rounded-full px-3 py-1 md:px-4 md:py-2">
+                <div className="text-xs md:text-sm text-white/90">Tap to flip</div>
               </div>
             )}
           </div>
@@ -123,31 +123,31 @@ function BlurredCard({
         
         {/* Back of Card */}
         <div 
-          className="absolute inset-0 w-full h-full backface-hidden rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 rotate-y-180 cursor-pointer"
+          className="absolute inset-0 w-full h-full backface-hidden rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 rotate-y-180 cursor-pointer"
           style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
           onClick={onFlip}
         >
-          <div className="flex flex-col items-center justify-center h-full text-white p-8 text-center space-y-6">
-            <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-pink-400">From:</h2>
-              <p className="text-xl font-semibold">{cardData.senderName}</p>
+          <div className="flex flex-col items-center justify-center h-full text-white p-4 md:p-8 text-center space-y-4 md:space-y-6">
+            <div className="space-y-2 md:space-y-4">
+              <h2 className="text-xl md:text-2xl font-bold text-pink-400">From:</h2>
+              <p className="text-lg md:text-xl font-semibold">{cardData.senderName}</p>
             </div>
             
-            <div className="space-y-4 max-w-xs">
-              <h3 className="text-lg font-bold text-green-400">Message:</h3>
-              <p className="text-base leading-relaxed">{cardData.message}</p>
+            <div className="space-y-2 md:space-y-4 max-w-xs">
+              <h3 className="text-base md:text-lg font-bold text-green-400">Message:</h3>
+              <p className="text-sm md:text-base leading-relaxed">{cardData.message}</p>
             </div>
             
-            <div className="mt-8">
+            <div className="mt-4 md:mt-8">
               <img 
                 src="/logo.png" 
                 alt="Winc Logo" 
-                className="h-24 w-auto"
+                className="h-12 md:h-24 w-auto"
               />
             </div>
             
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 rounded-full px-4 py-2">
-              <div className="text-sm text-white/90">Tap to flip back</div>
+            <div className="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 rounded-full px-3 py-1 md:px-4 md:py-2">
+              <div className="text-xs md:text-sm text-white/90">Tap to flip back</div>
             </div>
           </div>
         </div>
@@ -178,9 +178,9 @@ function WincCardExperience({
   };
 
   return (
-    <div className="flex flex-col items-center justify-between h-full max-w-lg mx-auto p-4">
+    <div className="flex flex-col items-center justify-between h-full w-full p-2 md:p-4">
       {/* The Card Display */}
-      <div className="flex-grow flex items-center justify-center w-full">
+      <div className="flex-grow flex items-center justify-center w-full min-h-0">
         <BlurredCard
           cardData={cardData}
           isRevealed={isRevealed}
@@ -192,14 +192,14 @@ function WincCardExperience({
 
       {/* Voice Visualizer and Controls - Only show when revealed and connected */}
       {isRevealed && (
-        <div className="flex flex-col items-center gap-4 w-full">
-          <div className="h-12 w-full">
+        <div className="flex flex-col items-center gap-2 md:gap-4 w-full max-w-sm mx-auto mt-4">
+          <div className="h-8 md:h-12 w-full">
             <BarVisualizer
               state={agentState}
-              barCount={30}
+              barCount={20}
               trackRef={audioTrack}
               className="agent-visualizer"
-              options={{ minHeight: 4, maxHeight: 50 }}
+              options={{ minHeight: 3, maxHeight: 30 }}
             />
           </div>
           <ControlBar
@@ -288,22 +288,22 @@ export default function CardPage({ params }: { params: Promise<{ collectionId: s
 
   if (isLoading) {
     return (
-      <main className="h-screen grid content-center bg-[var(--lk-bg)] text-white text-center">
-        <p>Loading your card...</p>
+      <main className="h-screen grid content-center bg-[var(--lk-bg)] text-white text-center p-4">
+        <p className="text-base md:text-lg">Loading your card...</p>
       </main>
     );
   }
 
   if (!cardData) {
     return (
-      <main className="h-screen grid content-center bg-[var(--lk-bg)] text-white text-center">
-        <p>Sorry, we couldn't find that card.</p>
+      <main className="h-screen grid content-center bg-[var(--lk-bg)] text-white text-center p-4">
+        <p className="text-base md:text-lg">Sorry, we couldn't find that card.</p>
       </main>
     );
   }
 
   return (
-    <main data-lk-theme="default" className="h-screen bg-[var(--lk-bg)] flex flex-col justify-center items-center">
+    <main data-lk-theme="default" className="h-screen bg-[var(--lk-bg)] flex flex-col justify-center items-center overflow-hidden">
       <LiveKitRoom
         token={connectionDetails?.participantToken}
         serverUrl={connectionDetails?.serverUrl}
@@ -330,7 +330,7 @@ function ControlBar(props: {
   }, []);
 
   return (
-    <div className="relative h-[100px] flex">
+    <div className="relative h-[80px] md:h-[100px] flex">
       <AnimatePresence>
         {props.agentState === "disconnected" && (
           <motion.button
@@ -338,7 +338,7 @@ function ControlBar(props: {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, top: "-10px" }}
             transition={{ duration: 1, ease: [0.09, 1.04, 0.245, 1.055] }}
-            className="uppercase absolute left-1/2 -translate-x-1/2 px-4 py-2 bg-white text-black rounded-md"
+            className="uppercase absolute left-1/2 -translate-x-1/2 px-3 py-2 md:px-4 md:py-2 bg-white text-black rounded-md text-sm md:text-base"
             onClick={props.onConnectButtonClicked}
           >
             Start Conversation
@@ -353,7 +353,7 @@ function ControlBar(props: {
               animate={{ opacity: 1, top: 0 }}
               exit={{ opacity: 0, top: "-10px" }}
               transition={{ duration: 0.4, ease: [0.09, 1.04, 0.245, 1.055] }}
-              className="flex h-8 absolute left-1/2 -translate-x-1/2 justify-center"
+              className="flex h-6 md:h-8 absolute left-1/2 -translate-x-1/2 justify-center"
             >
               <VoiceAssistantControlBar controls={{ leave: false }} />
               <DisconnectButton>
