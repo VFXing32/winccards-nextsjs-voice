@@ -108,7 +108,7 @@ function BlurredCard({
                   <img 
                     src="/logo.png" 
                     alt="Winc Logo" 
-                    className="h-12 w-auto"
+                    className="h-24 w-auto"
                   />
                 </div>
               </div>
@@ -142,7 +142,7 @@ function BlurredCard({
               <img 
                 src="/logo.png" 
                 alt="Winc Logo" 
-                className="h-12 w-auto"
+                className="h-24 w-auto"
               />
             </div>
             
